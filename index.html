@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>集换社 Pro 首批体验官招募</title>
+  <title>集换社 Pro 体验反馈指南</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #11100e;
-      --panel: #1a1815;
-      --panel-2: #211e19;
-      --line: rgba(230, 188, 105, .20);
-      --line-strong: rgba(230, 188, 105, .36);
+      --bg: #12100d;
+      --panel: #211d18;
+      --panel-soft: #2a241d;
       --gold: #e8b957;
-      --gold-2: #b9822f;
-      --text: #fff8eb;
-      --muted: #d0c4b2;
-      --soft: #9f927f;
-      --shadow: 0 12px 28px rgba(0, 0, 0, .30);
-      --radius: 8px;
+      --gold-dark: #8f611d;
+      --text: #fff7e8;
+      --muted: #d7cbb8;
+      --soft: #a99b86;
+      --line: rgba(232, 185, 87, .22);
+      --radius: 12px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     }
 
@@ -26,449 +23,120 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
+    html,
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background: #0f0d0b;
+      letter-spacing: 0;
     }
 
     body {
-      min-width: 320px;
-      margin: 0;
-      color: var(--text);
-      background:
-        linear-gradient(180deg, #191611 0%, #100f0d 42%, #15120f 100%);
-      letter-spacing: 0;
+      display: flex;
+      justify-content: center;
     }
 
-    button {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page-shell {
+    .poster {
       width: 100%;
       max-width: 430px;
       min-height: 100vh;
-      margin: 0 auto;
+      padding: 22px 18px 26px;
+      background:
+        radial-gradient(circle at 74% 0%, rgba(232, 185, 87, .20), transparent 230px),
+        linear-gradient(180deg, #1b1713 0%, #11100d 100%);
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% -90px, rgba(232, 185, 87, .18), transparent 280px),
-        linear-gradient(180deg, #181512 0%, #11100e 100%);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, .04), 0 16px 46px rgba(0, 0, 0, .42);
     }
 
-    .section {
-      padding: 30px 20px 0;
-      position: relative;
-    }
-
-    .section-title {
-      margin: 0 0 14px;
-      font-size: 21px;
-      line-height: 1.25;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .section-copy {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.85;
-    }
-
-    .hero {
-      min-height: 94svh;
-      padding: max(28px, env(safe-area-inset-top)) 20px 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      isolation: isolate;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(180deg, rgba(232, 185, 87, .10), transparent 44%),
-        radial-gradient(circle at 85% 12%, rgba(232, 185, 87, .12), transparent 120px);
-    }
-
-    .hero::after {
-      content: none;
-    }
-
-    .brand-bar {
+    .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      margin-bottom: 28px;
       color: var(--muted);
       font-size: 12px;
     }
 
-    .brand-mark {
+    .brand {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-weight: 700;
       color: var(--text);
+      font-weight: 800;
     }
 
-    .brand-mark::before {
+    .brand::before {
       content: "";
       width: 24px;
       height: 24px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #f0c56b, #a96f24);
-      box-shadow: 0 0 14px rgba(232, 185, 87, .18);
+      border-radius: 7px;
+      background: linear-gradient(135deg, #f1c86a, #a66c25);
     }
 
-    .status-pill {
-      padding: 6px 9px;
+    .tag {
+      padding: 6px 10px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, .055);
+      background: rgba(255, 255, 255, .06);
       white-space: nowrap;
     }
 
-    .hero-main {
-      padding: 34px 0 18px;
+    .hero {
+      margin-bottom: 18px;
     }
 
     .eyebrow {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .eyebrow::before,
-    .eyebrow::after {
-      content: none;
-    }
-
-    .hero h1 {
+    h1 {
       margin: 0;
-      font-size: clamp(34px, 9vw, 42px);
+      font-size: 35px;
       line-height: 1.12;
-      font-weight: 900;
-      letter-spacing: 0;
+      font-weight: 950;
     }
 
-    .hero-subtitle {
-      margin: 18px 0 0;
-      padding: 12px 14px;
-      color: #191106;
+    .highlight {
+      margin: 16px 0 0;
+      padding: 13px 14px;
+      color: #1a1206;
       font-size: 19px;
       line-height: 1.45;
-      font-weight: 900;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #f1c766, #e5ae45);
-      box-shadow: 0 10px 24px rgba(201, 135, 36, .22);
-    }
-
-    .hero-copy {
-      max-width: 350px;
-      margin: 14px 0 0;
-      color: #ded2bd;
-      font-size: 14px;
-      line-height: 1.85;
-    }
-
-    .product-visual {
-      margin: 26px 0 0;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .product-visual::before {
-      content: none;
-    }
-
-    .phone-panel {
-      min-height: 190px;
-      border-radius: 10px;
-      padding: 14px;
-      background:
-        linear-gradient(180deg, rgba(37, 33, 27, .98), rgba(21, 19, 16, .98));
-      border: 1px solid rgba(255, 255, 255, .09);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .phone-panel::after {
-      content: none;
-    }
-
-    .visual-topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      color: var(--soft);
-      font-size: 12px;
-    }
-
-    .visual-chip {
-      color: #120d04;
-      background: #e8b957;
-      padding: 5px 8px;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-
-    .metric-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .metric {
-      min-height: 64px;
-      padding: 10px;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .08);
-    }
-
-    .metric b {
-      display: block;
-      font-size: 18px;
-      color: var(--text);
-      line-height: 1.2;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 7px;
-      color: var(--soft);
-      font-size: 11px;
-    }
-
-    .visual-list {
-      display: grid;
-      gap: 8px;
-    }
-
-    .visual-line {
-      height: 28px;
-      border-radius: 7px;
-      background: rgba(255, 255, 255, .07);
-      border: 1px solid rgba(255, 255, 255, .06);
-    }
-
-    .hero-actions {
-      display: grid;
-      gap: 10px;
-      padding-bottom: 10px;
-    }
-
-    .btn {
-      min-height: 50px;
-      border-radius: var(--radius);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 0 16px;
-      cursor: pointer;
-      font-weight: 800;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .btn:active {
-      transform: scale(.985);
-    }
-
-    .btn-primary {
-      color: #161006;
-      background: #e8b957;
-      box-shadow: 0 10px 22px rgba(198, 135, 36, .22);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .07);
-    }
-
-    .btn-icon {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 18px;
-    }
-
-    .info-panel,
-    .participation-panel,
-    .notice-panel {
-      border: 1px solid var(--line);
+      font-weight: 950;
       border-radius: 12px;
-      background: rgba(255, 255, 255, .055);
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, #f1c86a, #e5ad43);
+      box-shadow: 0 10px 22px rgba(187, 125, 34, .22);
     }
 
-    .info-panel {
-      padding: 18px;
+    .lead {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
     }
 
-    .card-grid {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .feedback-card,
-    .reward-card {
+    .card {
+      margin-top: 14px;
       padding: 16px;
-      border: 1px solid rgba(255, 255, 255, .075);
+      border: 1px solid rgba(232, 185, 87, .18);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, .045);
+      background: rgba(255, 255, 255, .055);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
     }
 
-    .card-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .card-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      background: rgba(232, 185, 87, .12);
-      border: 1px solid rgba(232, 185, 87, .20);
-      flex: 0 0 28px;
-    }
-
-    .card-icon svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .feedback-card h3,
-    .reward-card h3 {
-      margin: 0;
-      font-size: 16px;
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 19px;
       line-height: 1.35;
-    }
-
-    .feedback-card p,
-    .reward-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .reward-card {
-      border-color: rgba(232, 185, 87, .18);
-    }
-
-    .reward-note {
-      margin: 14px 0 0;
-      padding: 12px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius);
-      background: rgba(232, 185, 87, .06);
-    }
-
-    .participation-panel {
-      padding: 18px;
-    }
-
-    .step-list {
-      display: grid;
-      gap: 12px;
-      margin: 16px 0 0;
-    }
-
-    .step-item {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 10px;
-      padding: 14px;
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, .045);
-    }
-
-    .step-number {
-      width: 34px;
-      height: 34px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #161006;
-      border-radius: 50%;
-      background: #e8b957;
       font-weight: 900;
     }
 
-    .step-item h3 {
-      margin: 0 0 5px;
-      font-size: 15px;
-      line-height: 1.35;
-    }
-
-    .step-item p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .channel-note {
-      margin: 14px 0 0;
-      padding: 12px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-      border: 1px dashed rgba(255, 255, 255, .13);
-      border-radius: var(--radius);
-      background: rgba(232, 185, 87, .055);
-    }
-
-    .channel-actions {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .notice-panel {
-      padding: 16px;
-    }
-
-    .notice-list {
+    .steps {
       display: grid;
       gap: 10px;
       margin: 0;
@@ -476,37 +144,127 @@
       list-style: none;
     }
 
-    .notice-list li {
+    .step {
       display: grid;
-      grid-template-columns: 88px 1fr;
+      grid-template-columns: 34px 1fr;
       gap: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .num {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a1206;
+      border-radius: 50%;
+      background: var(--gold);
+      font-weight: 950;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .step span {
+      display: block;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
-    .notice-list strong {
-      color: var(--text);
-      font-weight: 760;
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
     }
 
-    .future-slot {
-      margin-top: 16px;
+    .feedback-item {
+      min-height: 76px;
       padding: 12px;
-      border: 1px dashed rgba(255, 255, 255, .13);
-      border-radius: var(--radius);
+      border-radius: 10px;
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .feedback-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--gold);
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .feedback-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .reward {
+      display: grid;
+      gap: 10px;
+    }
+
+    .reward-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(232, 185, 87, .075);
+      border: 1px solid rgba(232, 185, 87, .18);
+    }
+
+    .reward-row strong {
+      color: var(--gold);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .reward-row span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .note {
+      margin: 12px 0 0;
+      padding: 11px 12px;
       color: var(--soft);
       font-size: 12px;
-      line-height: 1.6;
-      background: rgba(255, 255, 255, .025);
+      line-height: 1.7;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px dashed rgba(232, 185, 87, .25);
     }
 
-    .footer {
-      padding: 28px 20px max(28px, env(safe-area-inset-bottom));
-      color: rgba(185, 176, 161, .65);
+    .bottom {
+      margin-top: 16px;
+      padding: 14px;
       text-align: center;
+      border-radius: 14px;
+      color: #1a1206;
+      background: #e8b957;
+      font-weight: 950;
+      line-height: 1.5;
+    }
+
+    .bottom small {
+      display: block;
+      margin-top: 4px;
       font-size: 12px;
-      line-height: 1.7;
+      font-weight: 800;
+      color: rgba(26, 18, 6, .72);
     }
 
     @media (min-width: 431px) {
@@ -514,228 +272,99 @@
         padding: 18px 0;
       }
 
-      .page-shell {
-        border-radius: 22px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: .001ms !important;
-        animation-duration: .001ms !important;
+      .poster {
+        border-radius: 24px;
+        box-shadow: 0 16px 46px rgba(0, 0, 0, .46);
       }
     }
   </style>
 </head>
 <body>
-  <main class="page-shell">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="brand-bar">
-        <span class="brand-mark">集换社 Pro</span>
-        <span class="status-pill">2026.07.21 开启体验</span>
-      </div>
+  <main class="poster">
+    <div class="topbar">
+      <span class="brand">集换社 Pro</span>
+      <span class="tag">体验反馈指南</span>
+    </div>
 
-      <div class="hero-main">
-        <span class="eyebrow">首批用户体验招募</span>
-        <h1 id="hero-title">集换社 Pro 首批体验官招募</h1>
-        <p class="hero-subtitle">体验新 App，反馈问题和建议，有机会获得奖励</p>
-        <p class="hero-copy">集换社 Pro 还在测试和优化中，欢迎你先试用看看，把不好用的地方告诉我们。</p>
-
-        <div class="product-visual" aria-label="集换社 Pro 产品预览">
-          <div class="phone-panel">
-            <div class="visual-topline">
-              <span>新 App 体验中</span>
-              <span class="visual-chip">测试中</span>
-            </div>
-            <div class="metric-row">
-              <div class="metric">
-                <b>行情</b>
-                <span>价格趋势与关注卡牌</span>
-              </div>
-              <div class="metric">
-                <b>交易</b>
-                <span>出价、竞拍、订单流程</span>
-              </div>
-            </div>
-            <div class="visual-list">
-              <div class="visual-line"></div>
-              <div class="visual-line"></div>
-              <div class="visual-line"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-actions">
-        <button class="btn btn-primary" type="button" data-scroll-target="#participation">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 5v14m0 0 4-4m-4 4-4-4M5 20h14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          了解体验方式
-        </button>
-        <a class="btn btn-secondary" href="#download" id="downloadLink">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          下载/体验集换社 Pro
-        </a>
-      </div>
+    <section class="hero">
+      <span class="eyebrow">新 App 测试中，想听玩家真实意见</span>
+      <h1>用着不顺手？<br />告诉我们</h1>
+      <p class="highlight">提 Bug、说建议、聊体验，优质反馈有机会获得奖励</p>
+      <p class="lead">集换社 Pro 正在持续优化。你在使用行情、交易、订单、搜索等功能时遇到的问题，都可以反馈给我们。</p>
     </section>
 
-    <section class="section" aria-labelledby="intro-title">
-      <div class="info-panel">
-        <h2 class="section-title" id="intro-title">为什么邀请你参与体验？</h2>
-        <p class="section-copy">集换社 Pro 是集换社正在测试中的全新 App。我们希望先邀请一批真实用户试试看：哪里不好用、哪里看不懂、哪里操作麻烦，都可以反馈给我们。有效反馈或被采纳的建议，有机会获得奖励。</p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="types-title">
-      <h2 class="section-title" id="types-title">你可以反馈什么？</h2>
-      <div class="card-grid" id="feedbackTypes"></div>
-    </section>
-
-    <section class="section" aria-labelledby="reward-title">
-      <h2 class="section-title" id="reward-title">什么反馈有机会获得奖励？</h2>
-      <div class="card-grid" id="rewardRules"></div>
-      <p class="reward-note">不是所有反馈都一定获得奖励。平台会根据反馈有效性、问题严重程度、建议价值和是否被采纳进行综合评估。</p>
-    </section>
-
-    <section class="section" id="participation" aria-labelledby="participation-title">
-      <div class="participation-panel">
-        <h2 class="section-title" id="participation-title">如何参与体验？</h2>
-        <p class="section-copy">本页面仅用于介绍集换社 Pro 首批体验官计划，不在页面内收集个人信息。你可以先下载或体验新 App，再通过官方社群、客服或后续开放的反馈入口提交问题与建议。</p>
-        <div class="step-list" id="participationSteps"></div>
-        <p class="channel-note">反馈入口将以官方通知、社群公告或客服指引为准。后续如需接入飞书表单、问卷或 App 内反馈页，只需要替换下方入口链接配置。</p>
-        <div class="channel-actions">
-          <a class="btn btn-primary" href="#download" id="participationDownloadLink">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            下载/体验集换社 Pro
-          </a>
-          <a class="btn btn-secondary" href="#feedback-channel" id="feedbackEntryLink">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            查看反馈入口
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="notice-title">
-      <h2 class="section-title" id="notice-title">活动说明</h2>
-      <div class="notice-panel">
-        <ul class="notice-list" id="noticeList"></ul>
-        <div class="future-slot">预留模块：优秀建议公示。后续可在这里展示被采纳建议、版本更新记录与贡献用户。</div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      集换社 Pro 用户共创计划<br />
-      页面 V1 静态版本，后续可接入真实下载链接与外部反馈入口
-    </footer>
-  </main>
-
-  <script>
-    const pageConfig = {
-      downloadUrl: "#download",
-      feedbackEntryUrl: "#feedback-channel",
-      activityStartDate: "2026 年 7 月 21 日起",
-      participationSteps: [
-        { title: "先了解这个新 App", copy: "集换社 Pro 还在测试阶段，先邀请首批用户体验。" },
-        { title: "下载或打开体验", copy: "通过官方入口进入集换社 Pro，试试行情、交易、订单等常用功能。" },
-        { title: "把问题告诉我们", copy: "遇到不好用的地方，可以通过社群、客服、VIP 触达或后续开放的反馈入口提交。" }
-      ],
-      feedbackTypes: [
-        { title: "Bug 反馈", copy: "闪退、卡顿、无法登录、页面错位、价格异常等。", icon: "bug" },
-        { title: "体验优化", copy: "搜索不好用、筛选麻烦、交易路径太长、操作不顺手等。", icon: "spark" },
-        { title: "功能建议", copy: "价格提醒、关注卡牌、批量管理、Pro 专属行情等。", icon: "plus" },
-        { title: "内容建议", copy: "卡种专区、榜单、行情数据、资料补充等。", icon: "list" },
-        { title: "交易相关", copy: "出价、竞拍、订单、寄售、客服流程等。", icon: "trade" }
-      ],
-      rewardRules: [
-        { title: "有效反馈奖", copy: "提交真实、清晰、可判断的问题反馈。", icon: "check" },
-        { title: "优质建议奖", copy: "建议具备明确优化价值，并被评估为可进入后续优化池。", icon: "diamond" },
-        { title: "共创贡献奖", copy: "多次提交高质量建议，或建议被实际版本采纳。", icon: "crown" }
-      ],
-      notices: [
-        ["活动时间", "2026 年 7 月 21 日起"],
-        ["活动对象", "集换社 Pro 首批体验用户"],
-        ["奖励发放", "以平台后续通知为准"],
-        ["活动说明", "平台会根据反馈有效性、问题严重程度、建议价值和是否被采纳进行综合评估"],
-        ["最终解释权", "归集换社所有"]
-      ]
-    };
-
-    const icons = {
-      bug: '<svg viewBox="0 0 24 24" fill="none"><path d="M8 8V6a4 4 0 0 1 8 0v2M6 13H3m18 0h-3M7 18l-2 2m12-2 2 2M7 8h10v7a5 5 0 0 1-10 0V8Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      spark: '<svg viewBox="0 0 24 24" fill="none"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-      plus: '<svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>',
-      list: '<svg viewBox="0 0 24 24" fill="none"><path d="M8 7h11M8 12h11M8 17h11M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>',
-      trade: '<svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10l3 5-8 8-8-8 3-5Z M9 7l3 13 3-13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      check: '<svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      diamond: '<svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12l4 6-10 10L2 10l4-6Z M2 10h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-      crown: '<svg viewBox="0 0 24 24" fill="none"><path d="m4 8 4 4 4-7 4 7 4-4-2 11H6L4 8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-    };
-
-    function renderCards(targetId, items, className) {
-      const target = document.querySelector(targetId);
-      target.innerHTML = items.map((item) => `
-        <article class="${className}">
-          <div class="card-head">
-            <span class="card-icon" aria-hidden="true">${icons[item.icon] || icons.check}</span>
-            <h3>${item.title}</h3>
-          </div>
-          <p>${item.copy}</p>
-        </article>
-      `).join("");
-    }
-
-    function renderParticipationSteps() {
-      const target = document.querySelector("#participationSteps");
-      target.innerHTML = pageConfig.participationSteps.map((item, index) => `
-        <article class="step-item">
-          <span class="step-number">${index + 1}</span>
+    <section class="card">
+      <h2 class="section-title">怎么反馈？</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="num">1</span>
           <div>
-            <h3>${item.title}</h3>
-            <p>${item.copy}</p>
+            <strong>先正常体验集换社 Pro</strong>
+            <span>试试你常用的功能，比如行情、搜索、出价、竞拍、订单、我的。</span>
           </div>
-        </article>
-      `).join("");
-    }
+        </li>
+        <li class="step">
+          <span class="num">2</span>
+          <div>
+            <strong>遇到问题就记录下来</strong>
+            <span>说清楚发生在哪个页面、你做了什么、出现了什么结果，有截图更好。</span>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">3</span>
+          <div>
+            <strong>通过 App 内反馈入口提交</strong>
+            <span>也可以按官方社群、客服或 VIP 触达指引，把问题和建议发给我们。</span>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-    function renderNotices() {
-      const list = document.querySelector("#noticeList");
-      list.innerHTML = pageConfig.notices.map(([label, value]) => `
-        <li><strong>${label}</strong><span>${value}</span></li>
-      `).join("");
-    }
+    <section class="card">
+      <h2 class="section-title">你可以反馈这些</h2>
+      <div class="feedback-grid">
+        <div class="feedback-item">
+          <strong>Bug 问题</strong>
+          <span>闪退、卡顿、无法登录、页面错位、价格异常</span>
+        </div>
+        <div class="feedback-item">
+          <strong>体验优化</strong>
+          <span>搜索不好用、筛选麻烦、路径太长、操作不顺手</span>
+        </div>
+        <div class="feedback-item">
+          <strong>功能建议</strong>
+          <span>价格提醒、关注卡牌、批量管理、Pro 专属行情</span>
+        </div>
+        <div class="feedback-item">
+          <strong>交易相关</strong>
+          <span>出价、竞拍、订单、寄售、客服流程</span>
+        </div>
+      </div>
+    </section>
 
-    function setDownloadLink() {
-      document.querySelector("#downloadLink").setAttribute("href", pageConfig.downloadUrl);
-      document.querySelector("#participationDownloadLink").setAttribute("href", pageConfig.downloadUrl);
-      document.querySelector("#feedbackEntryLink").setAttribute("href", pageConfig.feedbackEntryUrl);
-    }
+    <section class="card">
+      <h2 class="section-title">什么反馈更有价值？</h2>
+      <div class="reward">
+        <div class="reward-row">
+          <strong>说得清楚</strong>
+          <span>问题真实、描述具体，团队能判断和复现。</span>
+        </div>
+        <div class="reward-row">
+          <strong>有优化价值</strong>
+          <span>建议能帮助更多玩家提升使用效率或交易体验。</span>
+        </div>
+        <div class="reward-row">
+          <strong>被版本采纳</strong>
+          <span>多次高质量反馈，或建议进入后续优化计划。</span>
+        </div>
+      </div>
+      <p class="note">奖励会根据反馈有效性、问题严重程度、建议价值和是否被采纳综合评估，不是所有反馈都会获得奖励。</p>
+    </section>
 
-    document.querySelectorAll("[data-scroll-target]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const target = document.querySelector(button.dataset.scrollTarget);
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-
-    renderCards("#feedbackTypes", pageConfig.feedbackTypes, "feedback-card");
-    renderCards("#rewardRules", pageConfig.rewardRules, "reward-card");
-    renderParticipationSteps();
-    renderNotices();
-    setDownloadLink();
-  </script>
+    <div class="bottom">
+      一起把集换社 Pro 做得更好用
+      <small>反馈入口以 App 内展示和官方通知为准</small>
+    </div>
+  </main>
 </body>
 </html>
