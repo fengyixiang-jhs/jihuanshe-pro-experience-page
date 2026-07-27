@@ -128,63 +128,6 @@
       line-height: 1.45;
     }
 
-    .benefit.active {
-      border-color: rgba(237, 193, 92, .62);
-      background: rgba(237, 193, 92, .10);
-    }
-
-    .detail-card {
-      display: none;
-      margin-top: 10px;
-      padding: 12px;
-      border: 1px solid rgba(237, 193, 92, .18);
-      border-radius: 12px;
-      background: rgba(0, 0, 0, .18);
-    }
-
-    .detail-card.active {
-      display: block;
-    }
-
-    .detail-card h2 {
-      margin: 0 0 8px;
-      color: var(--gold);
-      font-size: 16px;
-      line-height: 1.35;
-      font-weight: 950;
-    }
-
-    .detail-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .detail-list {
-      display: grid;
-      gap: 7px;
-      margin-top: 10px;
-    }
-
-    .detail-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 9px 10px;
-      border-radius: 9px;
-      background: rgba(255, 255, 255, .05);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .detail-row strong {
-      color: var(--text);
-      font-size: 13px;
-    }
-
     .panel {
       margin-top: 18px;
       padding: 15px;
@@ -361,6 +304,87 @@
       font-size: 12px;
       line-height: 1.55;
     }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, .58);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-panel {
+      width: min(398px, 100%);
+      padding: 16px;
+      border: 1px solid rgba(237, 193, 92, .24);
+      border-radius: 18px;
+      background: #1b1814;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .46);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .modal-title {
+      margin: 0;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .08);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .modal-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .modal-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 11px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .055);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .modal-row strong {
+      color: var(--text);
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -373,30 +397,14 @@
       <h1>提 Bug，赢大奖</h1>
       <p class="subtitle">集换社 Pro 全新上线！熟悉的市场，更高端的服务。即日起提交 Bug 和建议，我们会根据质量和有效留言数量为各位贡献者提供原盒奖励，并为所有提供有效建议的玩家在 APP 荣誉墙署名！填写表格、提交 Bug 和建议，一起打造更和谐的 TCG 社区和市场！</p>
       <div class="benefits">
-        <button class="benefit active" type="button" data-detail="rewardDetail">
+        <button class="benefit" type="button" data-modal="reward">
           <strong>提交有奖</strong>
           <span>确认采纳并发奖后，名单会在这里更新。</span>
         </button>
-        <button class="benefit" type="button" data-detail="rankDetail">
+        <button class="benefit" type="button" data-modal="rank">
           <strong>共创荣誉榜</strong>
           <span>按有效建议数量排名，贡献越多越靠前。</span>
         </button>
-      </div>
-
-      <div class="detail-card active" id="rewardDetail">
-        <h2>确认采纳名单</h2>
-        <p>已确认采纳并完成发奖的反馈，会在这里更新展示。</p>
-        <div class="detail-list">
-          <div class="detail-row"><strong>暂无名单</strong><span>发奖后更新</span></div>
-        </div>
-      </div>
-
-      <div class="detail-card" id="rankDetail">
-        <h2>有效建议数量排名</h2>
-        <p>按玩家提交的有效 Bug 和建议数量排序，后续同步 APP 荣誉墙。</p>
-        <div class="detail-list">
-          <div class="detail-row"><strong>暂无排名</strong><span>统计后更新</span></div>
-        </div>
       </div>
     </header>
 
@@ -439,15 +447,47 @@
     <span>我们会认真查看，符合条件的反馈会参与原盒奖励和荣誉榜统计。</span>
   </div>
 
+  <div class="modal" id="infoModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <button class="modal-close" type="button" aria-label="关闭">×</button>
+      </div>
+      <p class="modal-copy" id="modalCopy"></p>
+      <div class="modal-list" id="modalList"></div>
+    </div>
+  </div>
+
   <script>
     const config = {
       submitApi: ""
     };
 
+    const modalContent = {
+      reward: {
+        title: "确认采纳名单",
+        copy: "已确认采纳并完成发奖的反馈，会在这里更新展示。",
+        rows: [
+          ["暂无名单", "发奖后更新"]
+        ]
+      },
+      rank: {
+        title: "有效建议数量排名",
+        copy: "按玩家提交的有效 Bug 和建议数量排序，后续同步 APP 荣誉墙。",
+        rows: [
+          ["暂无排名", "统计后更新"]
+        ]
+      }
+    };
+
     const form = document.querySelector("#feedbackForm");
     const toast = document.querySelector("#toast");
     const requiredFields = ["location", "content"];
-    const benefitButtons = document.querySelectorAll("[data-detail]");
+    const modal = document.querySelector("#infoModal");
+    const modalTitle = document.querySelector("#modalTitle");
+    const modalCopy = document.querySelector("#modalCopy");
+    const modalList = document.querySelector("#modalList");
+    const closeModalButton = document.querySelector(".modal-close");
 
     function validate() {
       let valid = true;
@@ -484,13 +524,27 @@
       }
     });
 
-    benefitButtons.forEach((button) => {
+    document.querySelectorAll("[data-modal]").forEach((button) => {
       button.addEventListener("click", () => {
-        benefitButtons.forEach((item) => item.classList.remove("active"));
-        document.querySelectorAll(".detail-card").forEach((card) => card.classList.remove("active"));
-        button.classList.add("active");
-        document.querySelector(`#${button.dataset.detail}`).classList.add("active");
+        const content = modalContent[button.dataset.modal];
+        modalTitle.textContent = content.title;
+        modalCopy.textContent = content.copy;
+        modalList.innerHTML = content.rows.map(([name, status]) => `
+          <div class="modal-row"><strong>${name}</strong><span>${status}</span></div>
+        `).join("");
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
       });
+    });
+
+    function closeModal() {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    closeModalButton.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
     });
 
     form.addEventListener("submit", async (event) => {
