@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>集换社 Pro 体验反馈指南</title>
+  <title>集换社 Pro 反馈共创计划</title>
   <style>
     :root {
       --bg: #12100d;
@@ -120,6 +120,43 @@
       line-height: 1.8;
     }
 
+    .quick-points {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .quick-point {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 10px 11px;
+      border: 1px solid rgba(232, 185, 87, .18);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .055);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .quick-point b {
+      color: var(--gold);
+    }
+
+    .quick-icon {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a1206;
+      border-radius: 50%;
+      background: var(--gold);
+      font-weight: 950;
+      font-size: 13px;
+    }
+
     .card {
       margin-top: 14px;
       padding: 16px;
@@ -186,6 +223,33 @@
       gap: 9px;
     }
 
+    .reward-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .reward-card {
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(232, 185, 87, .08);
+      border: 1px solid rgba(232, 185, 87, .20);
+    }
+
+    .reward-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--gold);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .reward-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     .feedback-item {
       min-height: 76px;
       padding: 12px;
@@ -212,6 +276,30 @@
     .reward {
       display: grid;
       gap: 10px;
+    }
+
+    .rank-box {
+      margin-top: 10px;
+      padding: 14px;
+      color: #1a1206;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f1c86a, #e5ad43);
+    }
+
+    .rank-box strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .rank-box span {
+      display: block;
+      color: rgba(26, 18, 6, .78);
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 800;
     }
 
     .reward-row {
@@ -283,45 +371,87 @@
   <main class="poster">
     <div class="topbar">
       <span class="brand">集换社 Pro</span>
-      <span class="tag">体验反馈指南</span>
+      <span class="tag">反馈共创计划</span>
     </div>
 
     <section class="hero">
-      <span class="eyebrow">新 App 测试中，想听玩家真实意见</span>
-      <h1>用着不顺手？<br />告诉我们</h1>
-      <p class="highlight">提 Bug、说建议、聊体验，优质反馈有机会获得奖励</p>
-      <p class="lead">集换社 Pro 正在持续优化。你在使用行情、交易、订单、搜索等功能时遇到的问题，都可以反馈给我们。</p>
+      <span class="eyebrow">新 App 测试中，邀请玩家一起共创</span>
+      <h1>提反馈<br />拿奖励<br />上荣誉榜</h1>
+      <p class="highlight">有效 Bug 和建议越多，排名越高，优秀贡献者将长期展示在 App 内</p>
+      <p class="lead">集换社 Pro 正在持续优化。你在使用行情、交易、订单、搜索等功能时遇到的问题，都可以提交给我们。</p>
+      <div class="quick-points">
+        <div class="quick-point">
+          <span class="quick-icon">1</span>
+          <span><b>怎么提交：</b>进入 App「我的 → 帮助与反馈 → Pro 体验反馈」。</span>
+        </div>
+        <div class="quick-point">
+          <span class="quick-icon">2</span>
+          <span><b>提交有奖：</b>有效反馈、优质建议、重大 Bug 均有对应奖励。</span>
+        </div>
+        <div class="quick-point">
+          <span class="quick-icon">3</span>
+          <span><b>长期荣誉：</b>有效贡献会计入排名，高排名用户进入 App 荣誉榜。</span>
+        </div>
+      </div>
     </section>
 
     <section class="card">
-      <h2 class="section-title">怎么反馈？</h2>
+      <h2 class="section-title">1. 怎么提交？</h2>
       <ol class="steps">
         <li class="step">
           <span class="num">1</span>
           <div>
-            <strong>先正常体验集换社 Pro</strong>
-            <span>试试你常用的功能，比如行情、搜索、出价、竞拍、订单、我的。</span>
+            <strong>打开反馈入口</strong>
+            <span>在集换社 Pro App 内进入「我的 → 帮助与反馈 → Pro 体验反馈」。</span>
           </div>
         </li>
         <li class="step">
           <span class="num">2</span>
           <div>
-            <strong>遇到问题就记录下来</strong>
-            <span>说清楚发生在哪个页面、你做了什么、出现了什么结果，有截图更好。</span>
+            <strong>写清楚问题或建议</strong>
+            <span>说明发生页面、操作步骤、实际结果、期望效果，有截图更方便定位。</span>
           </div>
         </li>
         <li class="step">
           <span class="num">3</span>
           <div>
-            <strong>通过 App 内反馈入口提交</strong>
-            <span>也可以按官方社群、客服或 VIP 触达指引，把问题和建议发给我们。</span>
+            <strong>提交后等待评估</strong>
+            <span>团队会根据有效性、影响范围和采纳价值评估奖励与排名贡献。</span>
           </div>
         </li>
       </ol>
     </section>
 
     <section class="card">
-      <h2 class="section-title">你可以反馈这些</h2>
+      <h2 class="section-title">2. 提交有什么奖励？</h2>
+      <div class="reward-list">
+        <div class="reward-card">
+          <strong>有效反馈奖</strong>
+          <span>问题真实、描述清楚、团队可判断的反馈，可获得基础反馈奖励。</span>
+        </div>
+        <div class="reward-card">
+          <strong>优质建议奖</strong>
+          <span>建议有明确优化价值，并进入后续优化池，可获得优质建议奖励。</span>
+        </div>
+        <div class="reward-card">
+          <strong>重大 Bug 奖</strong>
+          <span>影响登录、交易、订单、支付、行情等关键流程的问题，将优先评估更高奖励。</span>
+        </div>
+      </div>
+      <p class="note">奖励以 App 内通知、客服通知或官方社群通知为准。无效、重复、无法判断的内容不计入奖励。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">3. 反馈多了有什么荣誉？</h2>
+      <div class="rank-box">
+        <strong>有效建议和 Bug 会计入贡献排名</strong>
+        <span>提交越多高质量反馈，排名越靠前。最终排名高的玩家，将进入「集换社 Pro 共创荣誉榜」，并长期展示在 App 内。</span>
+      </div>
+      <p class="note">排名会综合有效数量、问题严重程度、建议价值、是否被版本采纳等因素计算。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">可以反馈哪些内容？</h2>
       <div class="feedback-grid">
         <div class="feedback-item">
           <strong>Bug 问题</strong>
@@ -343,7 +473,7 @@
     </section>
 
     <section class="card">
-      <h2 class="section-title">什么反馈更有价值？</h2>
+      <h2 class="section-title">什么反馈更容易被采纳？</h2>
       <div class="reward">
         <div class="reward-row">
           <strong>说得清楚</strong>
@@ -362,8 +492,8 @@
     </section>
 
     <div class="bottom">
-      一起把集换社 Pro 做得更好用
-      <small>反馈入口以 App 内展示和官方通知为准</small>
+      现在就去 App 内提交反馈
+      <small>有效反馈有奖励，高质量贡献可进入长期荣誉榜</small>
     </div>
   </main>
 </body>
