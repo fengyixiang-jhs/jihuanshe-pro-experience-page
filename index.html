@@ -102,11 +102,14 @@
     }
 
     .benefit {
+      appearance: none;
+      text-align: left;
       min-height: 72px;
       padding: 12px;
       border: 1px solid rgba(255, 255, 255, .08);
       border-radius: 12px;
       background: rgba(255, 255, 255, .055);
+      cursor: pointer;
     }
 
     .benefit strong {
@@ -123,6 +126,63 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.45;
+    }
+
+    .benefit.active {
+      border-color: rgba(237, 193, 92, .62);
+      background: rgba(237, 193, 92, .10);
+    }
+
+    .detail-card {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid rgba(237, 193, 92, .18);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, .18);
+    }
+
+    .detail-card.active {
+      display: block;
+    }
+
+    .detail-card h2 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .detail-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .05);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .detail-row strong {
+      color: var(--text);
+      font-size: 13px;
     }
 
     .panel {
@@ -310,16 +370,32 @@
     </div>
 
     <header>
-      <h1>Pro 共创反馈</h1>
-      <p class="subtitle">用 Pro 时哪里卡、哪里不顺，欢迎告诉我们。好的反馈有机会拿原盒，也会记入共创贡献。</p>
+      <h1>提 Bug，赢大奖</h1>
+      <p class="subtitle">集换社 Pro 全新上线！熟悉的市场，更高端的服务。即日起提交 Bug 和建议，我们会根据质量和有效留言数量为各位贡献者提供原盒奖励，并为所有提供有效建议的玩家在 APP 荣誉墙署名！填写表格、提交 Bug 和建议，一起打造更和谐的 TCG 社区和市场！</p>
       <div class="benefits">
-        <div class="benefit">
+        <button class="benefit active" type="button" data-detail="rewardDetail">
           <strong>提交有奖</strong>
-          <span>Bug 定位清楚、建议有价值，就有机会拿原盒。</span>
-        </div>
-        <div class="benefit">
+          <span>确认采纳并发奖后，名单会在这里更新。</span>
+        </button>
+        <button class="benefit" type="button" data-detail="rankDetail">
           <strong>共创荣誉榜</strong>
-          <span>持续贡献的玩家，会被记录在 App 内荣誉榜。</span>
+          <span>按有效建议数量排名，贡献越多越靠前。</span>
+        </button>
+      </div>
+
+      <div class="detail-card active" id="rewardDetail">
+        <h2>确认采纳名单</h2>
+        <p>已确认采纳并完成发奖的反馈，会在这里更新展示。</p>
+        <div class="detail-list">
+          <div class="detail-row"><strong>暂无名单</strong><span>发奖后更新</span></div>
+        </div>
+      </div>
+
+      <div class="detail-card" id="rankDetail">
+        <h2>有效建议数量排名</h2>
+        <p>按玩家提交的有效 Bug 和建议数量排序，后续同步 APP 荣誉墙。</p>
+        <div class="detail-list">
+          <div class="detail-row"><strong>暂无排名</strong><span>统计后更新</span></div>
         </div>
       </div>
     </header>
@@ -371,6 +447,7 @@
     const form = document.querySelector("#feedbackForm");
     const toast = document.querySelector("#toast");
     const requiredFields = ["location", "content"];
+    const benefitButtons = document.querySelectorAll("[data-detail]");
 
     function validate() {
       let valid = true;
@@ -405,6 +482,15 @@
       if (requiredFields.includes(event.target.name)) {
         document.querySelector(`[data-field="${event.target.name}"]`).classList.remove("invalid");
       }
+    });
+
+    benefitButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        benefitButtons.forEach((item) => item.classList.remove("active"));
+        document.querySelectorAll(".detail-card").forEach((card) => card.classList.remove("active"));
+        button.classList.add("active");
+        document.querySelector(`#${button.dataset.detail}`).classList.add("active");
+      });
     });
 
     form.addEventListener("submit", async (event) => {
